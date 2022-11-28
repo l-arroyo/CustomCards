@@ -1,0 +1,150 @@
+body {
+
+    font-family: 'Poppins', sans-serif;
+    margin: 0em 15em 0em 15em;
+    background-color: #F1FFFA;
+
+}
+
+#Home {
+
+    background-color: #D1345B;
+    font-size: 200%;
+    padding: 15%;
+    text-align: center;
+    border-radius: 2em;
+    color: #F1FFFA;
+
+}
+
+#Home h1 {
+
+    margin-bottom: 0%;
+    font-size: 185%;
+
+}
+
+#Home p {
+
+    margin-top: 0%;
+    font-size: 75%;
+
+}
+
+#btn {
+
+    border-radius: 5px;
+    font-size: 100%;
+    padding: 2% 4% 2% 4%;
+    text-decoration: none;
+    border-radius: 2em;
+    background-color: #F1FFFA;    
+
+}
+
+#btn:hover {
+
+    background-color: #454545;;
+    color: #F1FFFA;
+
+}
+
+#Structure {
+
+    font-size: 150%;
+    padding: 0% 15% 0% 15%;
+    background-color: #F1FFFA;
+
+}
+
+#Structure h1 {
+
+    margin-bottom: 0%;
+    font-size: 185%;
+
+}
+
+#Structure p {
+
+    margin-top: 0%;
+
+}
+
+#noMessage {
+
+    font-size: 80%;
+
+}
+
+#add, #print {
+
+    margin-top: 0%;
+    border-radius: 5px;
+    font-size: 100%;
+    padding: 1.5% 2.5% 1.5% 2.5%;
+    text-decoration: none;
+    border-radius: 2em;
+    background-color: #F1FFFA;    
+
+}
+
+#print {
+
+    float: right;
+
+}
+
+#add:hover, #print:hover {
+
+    background-color: #454545;;
+    color: #F1FFFA;
+
+}
+
+#Structure ul {
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #F1FFFA;
+    font-size: 70%;
+
+}
+
+#Structure li {
+
+    float: left;
+
+}
+
+.elementImg {
+
+    width: 25em;
+    display: block;
+    margin: 0 auto;
+    margin-top: 3em;
+    margin-bottom: 3em;
+
+}
+
+#Structure ul p {
+
+    width: 50em;
+    padding-right: 5em;
+    text-align: justify;
+
+}
+
+.remove {
+
+    width: 3em;
+    float: right;
+
+}
+
+.remove:hover {
+
+   
+
+}

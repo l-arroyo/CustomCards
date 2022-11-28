@@ -4,20 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <title>Custom Cards</title> 
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <main>
         <section id="Home">
             <h1>Cute Messages</h1>
+            <p>Let's create the best card ever!</p>
             <button id="btn">Start Creating</button>
         </section>
 
         <section id="Structure">
             <h1>Messages</h1>
-            <ul class="msgsList"></ul>
+            <p>all messages you add will be displayed here</p>
+            <hr>
+
+            <p id="noMessage">It looks like you haven't added any message yet</p>
+            <ul class="msgsList">
+
+                <li class="msgElement">
+                    <h2>Lucas</h2>
+                    <img class="remove" src="removeIcon.svg" alt="remove">
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe autem perferendis accusantium harum quis voluptates tempore ratione deleniti culpa amet sunt, consequuntur odio quaerat voluptatem, ipsa veniam rem dolores soluta?</p>
+                    <img class="elementImg" src="https://i.pinimg.com/736x/2e/04/7e/2e047ef974302e211d0d638946ce323c.jpg" alt="Image">
+                </li>
+
+            </ul>
 
             <button id="add">Add a New Message</button>
+            <button id="print">Print Messages</button>
 
         </section>
 
@@ -49,8 +70,12 @@
         const btnStart = document.querySelector('#btn');
         const msgsList = document.querySelector('.msgsList');
         const newElement = document.querySelector('.msgElement');
+        const noMessage = document.querySelector('#noMessage');
         const btnAdd = document.querySelector('#add');
+        const btnPrint = document.querySelector('#print');
         const btnSend = document.querySelector('#send');
+        const btnCancel = document.querySelector('#cancel');
+        const btnRemove = document.querySelector('.remove');
 
         const sectionHome = document.querySelector('#Home');
         const sectionStructure = document.querySelector('#Structure');
@@ -71,6 +96,8 @@
             sectionStructure.style.display = 'block';
             sectionHome.style.display = 'none';
 
+            checkVisibility();
+
         });
 
 
@@ -81,24 +108,33 @@
             sectionStructure.style.display = 'none';
             sectionEditor.style.display = 'block';
 
-            btnSend.addEventListener('click', () => {
+        });
 
-                // CATCH VALUES FROM INPUTS
 
-                let from = labelFrom.value;
+        btnSend.addEventListener('click', () => {
+
+            // CATCH VALUES FROM INPUTS
+
+            let from = labelFrom.value;
                 let msg = labelMsg.value;
                 let img = labelImg.value;
 
                 // CREATE NEW ELEMENT
                 
                 let newElement = document.createElement('li');
-                
                 newElement.classList.add('msgElement');
-                newElement.innerHTML = `
+
+                let HTML = `
                     <h2>${from}</h2>
+                    <img class="remove" src="removeIcon.svg" alt="remove">
                     <p>${msg}</p>
-                    <img class="elementImg" src="${img}" alt="Image">
                 `;
+
+                if(img!=''){
+                    HTML+=`<img class="elementImg" src="${img}" alt="Image">`;
+                }
+
+                newElement.innerHTML = HTML;
 
                 msgsList.appendChild(newElement);
             
@@ -109,9 +145,48 @@
                 // HIDE EDITOR SECTION AND SHOW STRUCTURE SECTION
                 sectionStructure.style.display = 'block';
                 sectionEditor.style.display = 'none';
-            });
+
+                checkVisibility();
 
         });
+
+        btnCancel.addEventListener('click', () => {
+
+            // HIDE EDITOR SECTION AND SHOW STRUCTURE SECTION
+            labelFrom.value = '';
+            labelMsg.value = '';
+            labelImg.value = '';
+
+            sectionStructure.style.display = 'block';
+            sectionEditor.style.display = 'none';
+
+            checkVisibility();
+
+        });
+
+        btnPrint.addEventListener('click', () => {
+
+            // PRINT MESSAGES
+            window.print();
+            
+            
+        });
+
+        function checkVisibility() {
+
+            // CHECK IF THERE IS ANY MESSAGE ADDED
+
+            if(msgsList.children.length == 0){
+
+                noMessage.style.visibility = 'visible';
+
+            } else {
+
+                noMessage.style.visibility = 'collapse';
+
+            }
+
+        }
 
     </script>
 </body>
