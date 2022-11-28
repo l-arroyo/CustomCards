@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <section id="Home">
+            <h1>Cute Messages</h1>
+            <button id="btn">Start Creating</button>
+        </section>
+
+        <section id="Structure">
+            <h1>Messages</h1>
+            <ul class="msgsList"></ul>
+
+            <button id="add">Add a New Message</button>
+
+        </section>
+
+        <section id="Editor">
+
+            <h1>New Message</h1>
+            <div id="info">
+                <label for="from">From:</label>
+                <input type="text" id="from" name="from" placeholder="Your Name">
+                <br>
+
+                <label for="msg">Message:</label>
+                <textarea id="msg" name="msg" placeholder="Your Message"></textarea>
+                <br>
+
+                <label for="img">Image:</label>
+                <input type="text" id="img" name="img" placeholder="Image URL">
+                <br>
+
+                <button id="send">Add</button>
+                <button id="cancel">Cancel</button>
+            </div>
+        </section>
+
+    </main>
+    <script>
+
+        // DOM ELEMENTS
+        const btnStart = document.querySelector('#btn');
+        const msgsList = document.querySelector('.msgsList');
+        const newElement = document.querySelector('.msgElement');
+        const btnAdd = document.querySelector('#add');
+        const btnSend = document.querySelector('#send');
+
+        const sectionHome = document.querySelector('#Home');
+        const sectionStructure = document.querySelector('#Structure');
+        const sectionEditor = document.querySelector('#Editor');
+
+        const labelFrom = document.querySelector('#from');
+        const labelMsg = document.querySelector('#msg');
+        const labelImg = document.querySelector('#img');
+
+        // INITIAL EVENTS
+        sectionEditor.style.display = 'none';
+        sectionStructure.style.display = 'none';
+
+        btnStart.addEventListener('click', () => {
+
+            // HIDE HOME SECTION AND SHOW STRUCTURE SECTION
+
+            sectionStructure.style.display = 'block';
+            sectionHome.style.display = 'none';
+
+        });
+
+
+        btnAdd.addEventListener('click', () => {
+
+            // HIDE STRUCTURE SECTION AND SHOW EDITOR SECTION
+
+            sectionStructure.style.display = 'none';
+            sectionEditor.style.display = 'block';
+
+            btnSend.addEventListener('click', () => {
+
+                // CATCH VALUES FROM INPUTS
+
+                let from = labelFrom.value;
+                let msg = labelMsg.value;
+                let img = labelImg.value;
+
+                // CREATE NEW ELEMENT
+                
+                let newElement = document.createElement('li');
+                
+                newElement.classList.add('msgElement');
+                newElement.innerHTML = `
+                    <h2>${from}</h2>
+                    <p>${msg}</p>
+                    <img class="elementImg" src="${img}" alt="Image">
+                `;
+
+                msgsList.appendChild(newElement);
+            
+                labelFrom.value = '';
+                labelMsg.value = '';
+                labelImg.value = '';
+
+                // HIDE EDITOR SECTION AND SHOW STRUCTURE SECTION
+                sectionStructure.style.display = 'block';
+                sectionEditor.style.display = 'none';
+            });
+
+        });
+
+    </script>
+</body>
+</html>
